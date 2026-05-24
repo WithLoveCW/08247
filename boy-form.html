@@ -293,13 +293,19 @@
       return Math.random().toString(36).substring(2, 12).toUpperCase();
     }
 
-    function getRevealPagePath() {
-      return window.location.pathname.replace("boy-form.html", "index.html");
-    }
+    function getBasePath() {
+  return window.location.pathname.substring(
+    0,
+    window.location.pathname.lastIndexOf("/") + 1
+  );
+}
 
-    function getFormPagePath() {
-      return window.location.pathname.replace("index.html", "boy-form.html");
-    }
+function getRevealPagePath() {
+  return getBasePath() + "index.html";
+}
+
+function getFormPagePath() {
+  return getBasePath() + "boy-form.html";
 
     async function loadEditMode() {
       if (!editToken) return;
